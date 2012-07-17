@@ -45,6 +45,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ServiceProviderExtensions.1.0.nupkg" />
     <None Include="ServiceProviderExtensions.nuspec">
       <SubType>Designer</SubType>
     </None>
