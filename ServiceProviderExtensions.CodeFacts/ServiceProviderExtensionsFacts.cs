@@ -18,8 +18,18 @@ namespace ServiceProviderExtensions
                 var serviceProvider = new Mock<IServiceProvider>();
                 serviceProvider.Setup(m => m.GetService(typeof(IServiceProvider)))
                     .Returns(null);
-                var services = serviceProvider.Object.GetService<IServiceProvider>();
-                services.ShouldBeNull();
+                var service = serviceProvider.Object.GetService<IServiceProvider>();
+                service.ShouldBeNull();
+            }
+
+            [TestMethod]
+            public void ReturnsInstance_WhenServiceExists()
+            {
+                var serviceProvider = new Mock<IServiceProvider>();
+                serviceProvider.Setup(m => m.GetService(typeof(IServiceProvider)))
+                    .Returns(serviceProvider.Object);
+                var service = serviceProvider.Object.GetService<IServiceProvider>();
+                service.ShouldEqual(serviceProvider.Object);
             }
         }
 
